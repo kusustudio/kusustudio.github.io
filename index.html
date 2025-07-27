@@ -1,1 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KUSU STUDIO</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            background: linear-gradient(135deg, #f0ebe8 0%, #e8e0dc 100%);
+            color: #2c4238;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f7f3f1;
+            min-height: 100vh;
+            box-shadow: 0 0 30px rgba(44,66,56,0.1);
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 40px;
+            background: #f7f3f1;
+            border-bottom: 1px solid #e0dbd7;
+        }
+
+        .logo {
+            font-size: 18px;
+            font-weight: bold;
+            color: #2c4238;
+            letter-spacing: 2px;
+        }
+
+        .nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav a {
+            text-decoration: none;
+            color: #6b8471;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        .nav a:hover {
+            color: #2c4238;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 40px 40px;
+            background: #f7f3f1;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            color: #2c4238;
+            margin-bottom: 30px;
+            font-weight: normal;
+        }
+
+        .hero-text {
+            font-size: 16px;
+            color: #6b8471;
+            max-width: 600px;
+            margin: 0 auto 20px;
+            line-height: 1.8;
+        }
+
+        .hero-quote {
+            font-style: italic;
+            color: #8fa089;
+            margin: 20px 0 30px;
+            font-size: 18px;
+        }
+
+        .cta-button {
+            background: #2c4238;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background: #3d5247;
+            transform: translateY(-2px);
+        }
+
+        /* Artistic Illustration */
+        .illustration {
+            position: relative;
+            height: 400px;
+            margin: 40px 0;
+            overflow: hidden;
+        }
+
+        .landscape {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, #c8dce8 0%, #b8d1e0 30%, #a8c5d8 60%);
+        }
+
+        .mountain-1 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 60%;
+            background: #2c4238;
+            clip-path: polygon(0% 100%, 30% 20%, 70% 40%, 100% 100%);
+        }
+
+        .mountain-2 {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 80%;
+            height: 40%;
+            background: #8fa089;
+            clip-path: polygon(20% 100%, 60% 30%, 100% 100%);
+        }
+
+        .plant-1 {
+            position: absolute;
+            bottom: 30%;
+            left: 15%;
+            width: 60px;
+            height: 80px;
+            background: #6b8471;
+            border-radius: 30px 30px 0 0;
+        }
+
+        .plant-2 {
+            position: absolute;
+            bottom: 20%;
+            right: 20%;
+            width: 80px;
+            height: 100px;
+            background: #a8bca8;
+            border-radius: 40px 40px 0 0;
+        }
+
+        .birds {
+            position: absolute;
+            top: 20%;
+            right: 25%;
+            font-size: 12px;
+            color: #2c4238;
+            transform: rotate(-10deg);
+        }
+
+        .texture-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.3) 2px, transparent 2px),
+                radial-gradient(circle at 80% 60%, rgba(143,160,137,0.4) 1px, transparent 1px),
+                radial-gradient(circle at 40% 90%, rgba(107,132,113,0.3) 1.5px, transparent 1.5px);
+            background-size: 30px 30px, 25px 25px, 35px 35px;
+        }
+
+        /* Content Section */
+        .content {
+            padding: 60px 40px;
+        }
+
+        .content h2 {
+            font-size: 36px;
+            color: #2c4238;
+            margin-bottom: 40px;
+            font-weight: normal;
+        }
+
+        .content-subtitle {
+            font-size: 18px;
+            color: #6b8471;
+            margin-bottom: 50px;
+            font-style: italic;
+        }
+
+        .features {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .feature {
+            display: flex;
+            gap: 30px;
+            align-items: flex-start;
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #2c4238;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 22px;
+            color: #2c4238;
+            margin-bottom: 0;
+        }
+
+        .feature-content p {
+            display: none;
+        }
+
+        /* Social Links */
+        .social-section {
+            background: #2c4238;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .social-title {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .social-subtitle {
+            color: #a8bca8;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .social-link {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid #6b8471;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .social-link:hover {
+            background: white;
+            color: #2c4238;
+            transform: translateY(-2px);
+        }
+
+        .portfolio-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .portfolio-link {
+            background: #3d5247;
+            color: white;
+            text-decoration: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            transition: all 0.3s;
+            font-size: 14px;
+        }
+
+        .portfolio-link:hover {
+            background: #6b8471;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 20px;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .nav {
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 40px 20px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .content {
+                padding: 40px 20px;
+            }
+
+            .content h2 {
+                font-size: 28px;
+            }
+
+            .feature {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .social-links {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .portfolio-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">KUSU</div>
+            <nav class="nav">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#catalog">Catalog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home">
+            <div><img src="Logo_KUSU.png" alt="KUSU Logo"></div>
+            <div class="hero-text">
+                As an architect and candle artist, I believe in crafting stories that can be touched, smelled, and remembered.<br><br>
+                At KUSU, every candle is more than just wax—it's a story of dreams, serenity, and the beauty of everyday nature. Inspired by stones, flowers, and sacred forms, our handmade candles are created with care, curiosity, and deep intention.
+            </div>
+            <div style="margin: 30px 0; font-size: 18px;">
+                Made to calm. Made to ground. Made to inspire.
+            </div>
+            <div class="hero-quote">
+                "Let the scent, texture, and shape tell the story you need to feel."
+            </div>
+            <a href="#contact" class="cta-button">Get in Touch</a>
+        </section>
+
+
+
+        <!-- Content Section -->
+        <section class="content" id="about">
+            <h2>Crafted with Purpose</h2>
+            <div class="content-subtitle">
+                We're storytellers at heart—and we shape our stories through wax, earth, and flame.
+            </div>
+
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">🧶</div>
+                    <div class="feature-content">
+                        <h3>Handmade with Heart</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🌸</div>
+                    <div class="feature-content">
+                        <h3>Design with Meaning</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🌏</div>
+                    <div class="feature-content">
+                        <h3>Rooted in Thailand, Loved Globally</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">✨</div>
+                    <div class="feature-content">
+                        <h3>End-to-end Craft</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">💫</div>
+                    <div class="feature-content">
+                        <h3>Emotion in Every Candle</h3>
+                        <p></p>
+                    </div>
+                </div>
+
+                <div class="feature">
+                    <div class="feature-icon">🎁</div>
+                    <div class="feature-content">
+                        <h3>Gifting that Speaks</h3>
+                        <p></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Social & Contact Section -->
+        <section class="social-section" id="contact">
+            <h2 class="social-title">Follow our journey. Be part of the story.</h2>
+            <p class="social-subtitle">#kusucraft</p>
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/kusucraft" class="social-link" target="_blank">Facebook</a>
+                <a href="https://www.instagram.com/kusucraft" class="social-link" target="_blank">Instagram</a>
+                <a href="https://www.tiktok.com/@kusucraft" class="social-link" target="_blank">TikTok</a>
+                <a href="https://page.line.me/kusu" class="social-link" target="_blank">LINE</a>
+            </div>
+
+            <div class="portfolio-links" id="portfolio">
+                <a href="https://www.canva.com/design/DAGrOub79vg/OhNylvB8Zos1mlSzKFwkfQ/view?utm_content=DAGrOub79vg" class="portfolio-link" target="_blank">View Portfolio</a>
+                <a href="https://www.canva.com/design/DAGrOub79vg/OhNylvB8Zos1mlSzKFwkfQ/view?utm_content=DAGrOub7hju" class="portfolio-link" target="_blank">View Catalog</a>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add subtle animation to feature icons on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.transform = 'scale(1.1)';
+                    entry.target.style.transition = 'transform 0.3s ease';
+                    setTimeout(() => {
+                        entry.target.style.transform = 'scale(1)';
+                    }, 300);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-icon').forEach(icon => {
+            observer.observe(icon);
+        });
+    </script>
+</body>
+</html>
